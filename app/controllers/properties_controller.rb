@@ -28,11 +28,14 @@ class PropertiesController < ApplicationController
   end
 
   def update
-
+    if @property.update(property_params)
+      redirect_to properties_path, notice: "物件の情報を更新しました！"
+    else
+      render :edit
+    end
   end
 
   def destroy 
-
   end
 
   private 
