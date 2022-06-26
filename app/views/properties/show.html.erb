@@ -1,8 +1,23 @@
-<p>物件名： <%= @property.name %></p>
-<p>賃料： <%= @property.price %>円</p>
-<p>住所： <%= @property.address %></p>
-<p>築年数： <%= @property.age %>年</p>
-<p>備考： <%= @property.remarks %></p>
+<div>
+  <p>物件名：<%= @property.name %></p>
+  <p>賃料：<%= @property.price %>円</p>
+  <p>住所：<%= @property.address %></p>
+  <p>築年数：<%= @property.age %>年</p>
+  <p>備考：<%= @property.remarks %></p>
+</div>
+
+<hr>
+
+<div>
+  <% @property.stations.each_with_index do |value, index| %>
+    <tr>
+      <h3>最寄り駅 <%= "#{index+1}" %></h3>
+      <p>路線名：<%= value.train_name %></p>
+      <p>駅名：<%= value.station_name %></p>
+      <p>徒歩分数：<%= value.walk_minutes %>分</p>
+    </tr>
+  <% end %>
+</div>
 
 <%= link_to "編集", edit_property_path %> |
 <%= link_to "戻る", properties_path, name: :back %>

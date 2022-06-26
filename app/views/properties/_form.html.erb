@@ -12,5 +12,19 @@
     <%= f.text_area :remarks %><br>
   </div>
 
+  <hr>
+
+  <%= f.fields_for :stations do |stations_f| %>     
+    <div>
+      <h2>最寄り駅 <%= stations_f.index+1 %></h2>
+        <%= stations_f.label "路線名" %><br>
+        <%= stations_f.text_field :train_name %><br>
+        <%= stations_f.label "駅名" %><br>
+        <%= stations_f.text_field :station_name %><br>
+        <%= stations_f.label "徒歩分数" %><br>
+        <%= stations_f.text_field :walk_minutes %>分<br>
+    </div>
+  <% end %>  
+
   <%= f.submit "登録する" %>
 <% end %>
